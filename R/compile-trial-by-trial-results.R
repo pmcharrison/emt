@@ -3,15 +3,15 @@
 #' Compiles a data frame of trial-by-trial results for each participant.
 #' This function is intended to be called once data have been collected
 #' for several participants; it allows the researcher to inspect
-#' MDT results on a trial-by-trial level.
+#' EMT results on a trial-by-trial level.
 #' @param in_dir Results directory to process.
-#' @param label Label that the MDT's results were saved under (typically "MDT").
+#' @param label Label that the EMT's results were saved under (typically "EMT").
 #' @param combine Whether to combine results into one big data frame,
 #' or instead to return a list of data frames, one for each participant.
 #' @return A data frame, or list of data frames, of trial-by-trial results.
 #' @export
 compile_trial_by_trial_results <- function(in_dir = "output/results",
-                                           label = "MDT",
+                                           label = "EMT",
                                            combine = TRUE) {
   psychTestRCAT::compile_trial_by_trial_results(
     in_dir = in_dir,

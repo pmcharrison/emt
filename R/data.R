@@ -1,13 +1,13 @@
-#' MDT dictionary
+#' EMT dictionary
 #'
-#' The default internationalisation dictionary used by the MDT.
-#' @name mdt_dict
+#' The default internationalisation dictionary used by the EMT.
+#' @name emt_dict
 #' @docType data
 NULL
 
-#' MDT item bank
+#' EMT item bank
 #'
-#' The MDT's item bank
+#' The EMT's item bank
 #' @name item_bank
 #' @docType data
 NULL

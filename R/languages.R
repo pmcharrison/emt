@@ -1,7 +1,7 @@
-#' MDT languages
+#' EMT languages
 #'
-#' Lists the languages available for MDT implementations.
+#' Lists the languages available for EMT implementations.
 #' @export
-mdt_languages <- function() {
-  c("EN", "DE", "FR")
+emt_languages <- function() {
+  c("EN")
 }

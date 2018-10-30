@@ -1,0 +1,10 @@
+Package: emt
+Type: Package
+Title: Emotion Matching Test
+Version: 0.0.0.9001
+Author: Peter M. C. Harrison
+Maintainer: Peter M. C. Harrison <pmc.harrison@gmail.com>
+Description: Implementation of the Emotion Matching Test.
+License: MIT
+Encoding: UTF-8
+LazyData: true

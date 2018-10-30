@@ -38,3 +38,5 @@ AEMT_0033,STATEMENT_26,4,29,A student takes time out of university as they are f
 AEMT_0034,STATEMENT_27,4,30,No one laughs at the comedian's jokes; they consider themselves a failure.
 AEMT_0035,FINISH,,,Congratulations! You have completed the Emotion Matching Test.
 AEMT_0036,ITEM_NUM,,,Question **num_question** out of **test_length**:
+"results_have_been_saved",RESULTS_SAVED,,,"Your results have been saved."
+"you_may_close_browser",CLOSE_BROWSER,,,"You may now close the browser window."

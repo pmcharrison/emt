@@ -1,6 +1,6 @@
-#' Standalone MDT
+#' Standalone EMT
 #'
-#' This function launches a standalone testing session for the MDT.
+#' This function launches a standalone testing session for the EMT.
 #' This can be used for data collection, either in the laboratory or online.
 #' @param title (Scalar character) Title to display during testing.
 #' @param admin_password (Scalar character) Password for accessing the admin panel.
@@ -9,17 +9,15 @@
 #' at the bottom of the screen so that online participants can ask for help.
 #' @param languages (Character vector)
 #' Determines the languages available to participants.
-#' Possible languages include English (\code{"EN"}), French (\code{"French"}),
-#' and German (\code{"DE"}).
-#' The first language is selected by default
+#' Currently the only possible language is Engish (\code{"EN"}).
 #' @param dict The psychTestR dictionary used for internationalisation.
-#' @param ... Further arguments to be passed to \code{\link{mdt}()}.
+#' @param ... Further arguments to be passed to \code{\link{emt}()}.
 #' @export
-standalone_mdt <- function(title = "Melody discrimination test",
+standalone_emt <- function(title = "Emotion matching test",
                            admin_password = "replace-with-secure-password",
                            researcher_email = NULL,
-                           languages = mdt_languages(),
-                           dict = mdt::mdt_dict,
+                           languages = emt_languages(),
+                           dict = emt::emt_dict,
                            ...) {
   elts <- c(
     psychTestR::new_timeline(
@@ -27,7 +25,7 @@ standalone_mdt <- function(title = "Melody discrimination test",
                            button_text = psychTestR::i18n("AMDI_0016_I_0001_1")),
       dict = dict
     ),
-    mdt::mdt(dict = dict, ...),
+    emt::emt(dict = dict, ...),
     psychTestR::elt_save_results_to_disk(complete = TRUE),
     psychTestR::new_timeline(
       psychTestR::final_page(shiny::p(

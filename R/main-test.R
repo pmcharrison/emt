@@ -47,10 +47,15 @@ item_page <- function(item_number, num_items_in_test, statement,
     checkmate::qassert(get(x), "S1")
 
   psychTestR::page(
-    shiny::div(
+    ui = shiny::div(
       item_prompt(item_number, test_length, num_items_in_test),
       item_table(audio_dir, audio_1, audio_2, audio_3, audio_4)
-    ))
+    ),
+    label = "item",
+    get_answer = function(input, ...) input$last_btn_pressed,
+    save_answer = FALSE,
+    validate = function(answer, ...) !is.null(answer)
+  )
 }
 
 item_prompt <- function(item_number, test_length, num_items_in_test) {

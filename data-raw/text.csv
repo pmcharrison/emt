@@ -1,0 +1,39 @@
+dict_id,emt_id,statement_category,statement_id,EN
+AEMT_0001,WELCOME,,,Welcome to the Emotion Matching Test!
+AEMT_0002,GENERAL INSTRUCTIONS,,,"You will now be presented with short descriptions of situations intended to convey an emotional meaning.\\Each description will be accompanied by four musical excerpts. Your task is to **select which musical excerpt you believe best accompanies the situation** described.\\\\ 
+Please **read the description before listening to each of the four music clips**. Sound clips may repeat, so do not worry about making the same selection twice.\\\\
+Note that **this task is not timed**, so you do not have to hurry; you may listen to the excerpts more than once.\\The important thing is that you are satisfied with your answer for each question before you move on to the next."
+AEMT_0003,CONTINUE_BUTTON,,,Continue
+AEMT_0004, TRIAL INSTRUCTIONS,,,"Read the statement below and indicate which of the following four music clips you believe best accompanies the situation described.\\Please **select only ONE of the music clips.** If you are unsure, provide your best guess."
+"AEMT_0005_I_0001_1	 	",STATEMENT_1,1,1,"A motorist drives into a car park; a car pulls in front of them, taking the last space."
+AEMT_0006,CLIP_1,,,Clip 1
+AEMT_0007,CLIP_2,,,Clip 2
+"AEMT_0008		",CLIP_3,,,Clip 3
+"AEMT_0008_R_0001_1	",CLIP_4,,,Clip 4
+"AEMT_0009_I_0001_1		",STATEMENT_2,1,2,A commuter finds out their flight has been delayed when they arrive at the airport. 
+"AEMT_0010_I_0001_1	 	",STATEMENT_3,1,3,A middle aged individual gets into a fight with their spouse.
+AEMT_0011_I_0001_1 ,STATEMENT_4,1,4,"After an exam, a student is furious to discover they forgot to answer a question."
+"AEMT_0012_I_0001_1 	",STATEMENT_5,1,7,"As a fan leaves the concert, a drunk vomits all over their jacket, soaking it."
+AEMT_0013,STATEMENT_6,2,8,A lone traveller finds themselves lost in an unfamiliar city at dark.
+AEMT_0014,STATEMENT_7,2,9,"A snake darts forward, jaws open, and sinks its fangs into a hiker's leg."
+AEMT_0015,STATEMENT_8,2,10,"A dog strains forward, snarling, and suddenly leaps towards a child."
+AEMT_0016,STATEMENT_9,2,11,A nurse sinks the needles from the IV bag into a patient's arm.
+"AEMT_0017	",STATEMENT_10,2,13,"Clutching their chest, an elderly individual falls to the floor, unable to breathe."
+"AEMT_0018  	",STATEMENT_11,2,14,A patient winces and screams as the doctor stiches a gaping wound on their arm.
+AEMT_0019,STATEMENT_12,2,15,"Alone in the house, a young person freezes as they hear someone forcing the door."
+AEMT_0020,STATEMENT_13,3,16,A worker laughs so hard with their colleagues that tears pour down their face.
+AEMT_0021,STATEMENT_14,3,17,A student dances in the packed bar as their favourite DJ spins the tunes.
+AEMT_0022,STATEMENT_15,3,18,A recently engaged couple raise their champagne glasses and greet the new year together.
+AEMT_0023,STATEMENT_16,3,19, A young person attracts attention as they walk into the dance with a beautiful date.
+AEMT_0024,STATEMENT_17,3,20,"At the net, the player goes up and blocks the volleyball perfectly, saving the game."
+AEMT_0025,STATEMENT_18,3,21,The driver's race car surges into the lead and everyone around them cheers.
+AEMT_0026,STATEMENT_19,3,22,"A contestant has just won 10 millions pounds; they jump up and down, screaming."
+AEMT_0027,STATEMENT_20,3,23,An 18 year old finally recieves the gift they've always wanted.
+AEMT_0028,STATEMENT_21,4,24,"A labourer has been sick all week, lying on a lumpy couch with a bad cold."
+AEMT_0029,STATEMENT_22,4,25,"After a footballer loses the game on an own goal, their teammates can't look at them."
+AEMT_0030,STATEMENT_23,4,26,A teenager's heart sinks as they realise they love someone who does not love them.
+AEMT_0031,STATEMENT_24,4,27, A therapist comforts a mourning parent during a grief counselling session.
+AEMT_0032,STATEMENT_25,4,28,A tourist visits a slavery exhibit at a local museum.
+AEMT_0033,STATEMENT_26,4,29,A student takes time out of university as they are feeling depressed.
+AEMT_0034,STATEMENT_27,4,30,No one laughs at the comedian's jokes; they consider themselves a failure.
+AEMT_0035,FINISH,,,Congratulations! You have completed the Emotion Matching Test.

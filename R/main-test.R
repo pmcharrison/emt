@@ -85,7 +85,7 @@ item_table <- function(audio_dir, audio_1, audio_2, audio_3, audio_4) {
     },
     SIMPLIFY = FALSE,
     audio = c(audio_1, audio_2, audio_3, audio_4),
-    button_id = c("audio_1", "audio_2", "audio_3", "audio_4"),
+    button_id = c("clip_1", "clip_2", "clip_3", "clip_4"),
     text = c("AEMT_0006", "AEMT_0007", "AEMT_0008", "AEMT_0008_R_0001_1")
     ))
 }

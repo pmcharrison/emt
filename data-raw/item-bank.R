@@ -20,8 +20,13 @@ categories <- seq_len(n)
 category_counts <- clips %>% count(clip_category)
 category_orders <- permutations(n = n, r = n, v = category_counts$clip_category)
 
-clip_ids_by_category_id <- map(categories,
-                               function(x) clips %>% filter(clip_category == x) %>% pull(clip_id))
+clip_ids_by_category_id <- map(
+  categories,
+  function(x) clips %>% filter(clip_category == x) %>% pull(clip_id))
+
+statement_ids_by_category_id <- map(
+  categories,
+  function(x) statements %>% filter(statement_category == x) %>% pull(statement_id))
 
 unordered_items <- do.call(expand.grid, clip_ids_by_category_id)
 
@@ -42,40 +47,38 @@ ordered_items <- by_row(unordered_items, function(x) {
 }, .labels = FALSE, .collate = "list") %>% extract2(1) %>% bind_rows()
 
 # To prevent the combinatorial space from exploding,
-# we randomly assign one target to each ordered
+# we randomly assign one target to each clip ordering
 set.seed(1)
-ordered_items_plus_target <- ordered_items %>%
-  mutate(., target_position = sample(x = n, size = nrow(.), replace = TRUE))
+items <- ordered_items %>%
+  mutate(.,
+         target_position = sample(x = n, size = nrow(.), replace = TRUE),
+         target_clip_id = NA,
+         target_category_id = NA,
+         statement_id = NA,
+         statement_dict_id = NA)
+for (i in seq_len(nrow(items))) {
+  pos <- items$target_position[i]
 
+  target_category_id <- items[[sprintf("clip_%i_category_id", pos)]][i]
+  target_clip_id <- items[[sprintf("clip_%i_id", pos)]][i]
 
+  items$target_category_id[i] <- target_category_id
+  items$target_clip_id[i] <- target_clip_id
 
-  by_row(function(x) {
-    tibble(target = seq_len(n),
-           target_clip_id = map_int(target, function(i) x[[sprintf("clip_%i_id", i)]]),
-           target_category_id = map_int(target, function(i) x[[sprintf("clip_%i_category_id", i)]]))
-  }, .collate = "rows")
-ordered_items_plus_target$.row <- NULL
-
-clip_num <- nrow(clips)
-clip_combinations <- expand.grid(clip_1 = 1:5,
-                                 clip_2 = 1:3)
-
-# One from each category
-all_unordered_clip_sets
-
-
-generate_items <- function(row) {
-  target_category <- row$statement_category
-  distract_categories <- setdiff(categories, target_category)
-  # Find all eligible unordered clip sets
-
-  # Find all potential orderings
+  statement_id <- sample(x = statement_ids_by_category_id[[target_category_id]],
+                         size = 1)
+  items$statement_id[i] <- statement_id
+  items$statement_dict_id[i] <- statements$dict_id[statements$statement_id == statement_id]
 }
 
-
-params %>% by_row(generate_items, .collate = "rows")
-
-
+item_bank <-
+  left_join(x = items,
+            y = rename(params,
+                       target_category_id = statement_category,
+                       target_clip_id = clip_id),
+            by = c("target_clip_id", "target_category_id", "statement_id")) %>%
+  add_column(., item_id = seq_len(nrow(.)), .before = 1) %>%
+  mutate(answer = sprintf("clip_%i", target_position)) %>%
+  as.data.frame()
 
 devtools::use_data(item_bank, overwrite = TRUE)
-

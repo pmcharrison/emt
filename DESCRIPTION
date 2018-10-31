@@ -1,7 +1,7 @@
 Package: emt
 Type: Package
 Title: Emotion Matching Test
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Author: Peter M. C. Harrison
 Maintainer: Peter M. C. Harrison <pmc.harrison@gmail.com>
 Description: Implementation of the Emotion Matching Test.

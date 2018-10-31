@@ -22,7 +22,7 @@ standalone_emt <- function(title = "Emotion matching test",
   elts <- c(
     psychTestR::new_timeline(
       psychTestR::get_p_id(prompt = psychTestR::i18n("enter_p_id"),
-                           button_text = psychTestR::i18n("AMDI_0016_I_0001_1")),
+                           button_text = psychTestR::i18n("AEMT_0003")),
       dict = dict
     ),
     emt::emt(dict = dict, ...),

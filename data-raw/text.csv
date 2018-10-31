@@ -37,6 +37,8 @@ AEMT_0032,STATEMENT_25,4,28,A tourist visits a slavery exhibit at a local museum
 AEMT_0033,STATEMENT_26,4,29,A student takes time out of university as they are feeling depressed.
 AEMT_0034,STATEMENT_27,4,30,No one laughs at the comedian's jokes; they consider themselves a failure.
 AEMT_0035,FINISH,,,Congratulations! You have completed the Emotion Matching Test.
-AEMT_0036,ITEM_NUM,,,Question **num_question** out of **test_length**:
+AEMT_0036,ITEM_NUM,,,Question **{{num_question}}** out of **{{test_length}}**:
 "results_have_been_saved",RESULTS_SAVED,,,"Your results have been saved."
 "you_may_close_browser",CLOSE_BROWSER,,,"You may now close the browser window."
+"demo_intro",DEMO_INTRO,,,"Welcome to the **Emotion Matching Test**!\\This test adapts to your performance. If you do well, you will be given harder items.\\Usually this adaptive procedure is hidden from the participant. For this demonstration, however, we will show your running ability score and corresponding difficulty level on each trial."
+"enter_p_id",ENTER_P_ID,,,"Please enter your participant ID."

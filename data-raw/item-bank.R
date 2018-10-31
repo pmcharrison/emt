@@ -8,7 +8,8 @@ statements <-
   select(- EN)
 
 clips <- read_csv("data-raw/clips.csv", col_types = cols()) %>%
-  rename(clip_file_name = file_name)
+  rename(clip_file_name = file_name) %>%
+  mutate(clip_file_name = paste(clip_file_name, "mp3", sep = "."))
 
 params <- read_csv("data-raw/params.csv", col_types = cols()) %>%
   select_all(~ gsub(".", "_", ., fixed = TRUE))
@@ -77,6 +78,7 @@ item_bank <-
                        target_category_id = statement_category,
                        target_clip_id = clip_id),
             by = c("target_clip_id", "target_category_id", "statement_id")) %>%
+  na.omit() %>%
   add_column(., item_id = seq_len(nrow(.)), .before = 1) %>%
   mutate(answer = sprintf("clip_%i", target_position)) %>%
   as.data.frame()

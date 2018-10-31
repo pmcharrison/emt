@@ -9,8 +9,9 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    checkmate
+    checkmate (>= 1.8.5)
 Suggests:
-    tidyverse,
-    purrrlyr,
-    gtools
+    tidyverse (>= 1.2.1),
+    purrrlyr (>= 0.0.3),
+    gtools (>= 3.8.1)
+RoxygenNote: 6.1.0

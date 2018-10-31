@@ -1,4 +1,4 @@
-mdt.options <- function(next_item.criterion,
+emt.options <- function(next_item.criterion,
                         next_item.estimator,
                         next_item.prior_dist,
                         next_item.prior_par,
@@ -12,6 +12,6 @@ mdt.options <- function(next_item.criterion,
     next_item.prior_par = next_item.prior_par,
     final_ability.estimator = final_ability.estimator,
     constrain_answers = constrain_answers,
-    avoid_duplicates = "statement"
+    avoid_duplicates = "statement_id"
   )
 }

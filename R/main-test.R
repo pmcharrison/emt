@@ -27,28 +27,28 @@ show_item <- function(media_dir) {
     item_page(
       item_number = psychTestRCAT::get_item_number(item),
       num_items_in_test = psychTestRCAT::get_num_items_in_test(item),
-      statement = item$statement,
+      statement_dict_id = item$statement_dict_id,
       audio_dir = media_dir,
-      audio_1 = item$audio_1,
-      audio_2 = item$audio_2,
-      audio_3 = item$audio_3,
-      audio_4 = item$audio_4
+      audio_1 = item$clip_1_file_name,
+      audio_2 = item$clip_2_file_name,
+      audio_3 = item$clip_3_file_name,
+      audio_4 = item$clip_4_file_name
     )
   }
 }
 
-item_page <- function(item_number, num_items_in_test, statement,
+item_page <- function(item_number, num_items_in_test, statement_dict_id,
                       audio_dir,
                       audio_1, audio_2, audio_3, audio_4) {
   for (x in c("item_number", "num_items_in_test"))
     checkmate::qassert(get(x), "X1")
   checkmate::qassert(num_items_in_test, "X1")
-  for (x in c("statement", "audio_1", "audio_2", "audio_3", "audio_4"))
+  for (x in c("statement_dict_id", "audio_1", "audio_2", "audio_3", "audio_4"))
     checkmate::qassert(get(x), "S1")
 
   psychTestR::page(
     ui = shiny::div(
-      item_prompt(item_number, test_length, num_items_in_test),
+      item_prompt(item_number, num_items_in_test, statement_dict_id),
       item_table(audio_dir, audio_1, audio_2, audio_3, audio_4)
     ),
     label = "item",
@@ -58,7 +58,7 @@ item_page <- function(item_number, num_items_in_test, statement,
   )
 }
 
-item_prompt <- function(item_number, test_length, num_items_in_test) {
+item_prompt <- function(item_number, num_items_in_test, statement_dict_id) {
   shiny::div(
     shiny::p(
       psychTestR::i18n(
@@ -68,8 +68,10 @@ item_prompt <- function(item_number, test_length, num_items_in_test) {
                      "?" else
                        num_items_in_test))
     ),
-    shiny::p(
-      psychTestR::i18n("AEMT_0004")
+    shiny::p(psychTestR::i18n("AEMT_0004")),
+    shiny::div(
+      style = "background-color: #ddffff; padding: 1em; border-color: black; border-style: solid; border-width: 0px; border-radius: 15px;",
+      shiny::p(shiny::strong(psychTestR::i18n(statement_dict_id)))
     )
   )
 }
@@ -80,7 +82,8 @@ item_table <- function(audio_dir, audio_1, audio_2, audio_3, audio_4) {
       shiny::tags$tr(
         shiny::tags$th(style = "padding: 10px;", item_audio(audio_dir, audio)),
         shiny::tags$th(style = "padding: 10px;",
-                       shiny::actionButton(inputId = button_id, label = text))
+                       psychTestR::trigger_button(inputId = button_id,
+                                                  label = psychTestR::i18n(text)))
       )
     },
     SIMPLIFY = FALSE,
@@ -92,8 +95,8 @@ item_table <- function(audio_dir, audio_1, audio_2, audio_3, audio_4) {
 
 item_audio <- function(audio_dir, audio, type = "mp3") {
   shiny::tags$audio(controls = "controls",
-                    source = file.path(audio_dir, audio),
-                    type = paste0("audio/", type),
+                    shiny::tags$source(src = file.path(audio_dir, audio),
+                                       type = paste0("audio/", type)),
                     "Your browser does not support audio.")
 }
 

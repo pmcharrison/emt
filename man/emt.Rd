@@ -7,10 +7,10 @@
 emt(num_items = 20L, take_training = TRUE, label = "EMT",
   feedback = emt.feedback.no_score(),
   media_dir = "http://media.gold-msi.org/test_materials/EMT/audio",
-  next_item.criterion = "bOpt", next_item.estimator = "BM",
-  next_item.prior_dist = "norm", next_item.prior_par = c(0, 1),
-  final_ability.estimator = "WL", constrain_answers = FALSE,
-  dict = emt::emt_dict)
+  min_response_time = 20, next_item.criterion = "bOpt",
+  next_item.estimator = "BM", next_item.prior_dist = "norm",
+  next_item.prior_par = c(0, 1), final_ability.estimator = "WL",
+  constrain_answers = FALSE, dict = emt::emt_dict)
 }
 \arguments{
 \item{num_items}{(Integer scalar) Number of items in the test.}
@@ -24,6 +24,9 @@ at the end of the test. By default no feedback is given.}
 
 \item{media_dir}{(Character scalar) File path to the directory
 hosting the test's media files (typically a publicly accessible web directory).}
+
+\item{min_response_time}{Minimum response time for each question,
+after which response options are activated (seconds).}
 
 \item{next_item.criterion}{(Character scalar)
 Criterion for selecting successive items in the adaptive test.

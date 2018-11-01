@@ -1,4 +1,5 @@
 main_test <- function(label, media_dir, num_items,
+                      min_response_time,
                       next_item.criterion,
                       next_item.estimator,
                       next_item.prior_dist,
@@ -9,7 +10,7 @@ main_test <- function(label, media_dir, num_items,
   psychTestRCAT::adapt_test(
     label = label,
     item_bank = item_bank,
-    show_item = show_item(media_dir),
+    show_item = show_item(media_dir, min_response_time),
     stopping_rule = psychTestRCAT::stopping_rule.num_items(n = num_items),
     opt = emt.options(next_item.criterion = next_item.criterion,
                       next_item.estimator = next_item.estimator,
@@ -21,7 +22,7 @@ main_test <- function(label, media_dir, num_items,
   )
 }
 
-show_item <- function(media_dir) {
+show_item <- function(media_dir, min_response_time) {
   function(item, ...) {
     stopifnot(is(item, "item"), nrow(item) == 1L)
     item_page(
@@ -32,14 +33,16 @@ show_item <- function(media_dir) {
       audio_1 = item$clip_1_file_name,
       audio_2 = item$clip_2_file_name,
       audio_3 = item$clip_3_file_name,
-      audio_4 = item$clip_4_file_name
+      audio_4 = item$clip_4_file_name,
+      min_response_time
     )
   }
 }
 
 item_page <- function(item_number, num_items_in_test, statement_dict_id,
                       audio_dir,
-                      audio_1, audio_2, audio_3, audio_4) {
+                      audio_1, audio_2, audio_3, audio_4,
+                      min_response_time) {
   for (x in c("item_number", "num_items_in_test"))
     checkmate::qassert(get(x), "X1")
   checkmate::qassert(num_items_in_test, "X1")
@@ -49,7 +52,8 @@ item_page <- function(item_number, num_items_in_test, statement_dict_id,
   psychTestR::page(
     ui = shiny::div(
       item_prompt(item_number, num_items_in_test, statement_dict_id),
-      item_table(audio_dir, audio_1, audio_2, audio_3, audio_4)
+      item_table(audio_dir, audio_1, audio_2, audio_3, audio_4,
+                 min_response_time)
     ),
     label = "item",
     get_answer = function(input, ...) input$last_btn_pressed,
@@ -76,14 +80,16 @@ item_prompt <- function(item_number, num_items_in_test, statement_dict_id) {
   )
 }
 
-item_table <- function(audio_dir, audio_1, audio_2, audio_3, audio_4) {
+item_table <- function(audio_dir, audio_1, audio_2, audio_3, audio_4,
+                       min_response_time) {
   shiny::tags$table(
     mapply(function(audio, button_id, text) {
       shiny::tags$tr(
         shiny::tags$th(style = "padding: 10px;", item_audio(audio_dir, audio)),
         shiny::tags$th(style = "padding: 10px;",
                        psychTestR::trigger_button(inputId = button_id,
-                                                  label = psychTestR::i18n(text)))
+                                                  label = psychTestR::i18n(text),
+                                                  enable_after = min_response_time))
       )
     },
     SIMPLIFY = FALSE,

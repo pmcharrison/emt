@@ -13,6 +13,8 @@
 #' @param label (Character scalar) Label to give the EMT results in the output file.
 #' @param feedback (Function) Defines the feedback to give the participant
 #' at the end of the test. By default no feedback is given.
+#' @param min_response_time Minimum response time for each question,
+#' after which response options are activated (seconds).
 #' @param media_dir (Character scalar) File path to the directory
 #' hosting the test's media files (typically a publicly accessible web directory).
 #' @param next_item.criterion (Character scalar)
@@ -55,6 +57,7 @@ emt <- function(num_items = 20L,
                 label = "EMT",
                 feedback = emt.feedback.no_score(),
                 media_dir = "http://media.gold-msi.org/test_materials/EMT/audio",
+                min_response_time = 20,
                 next_item.criterion = "bOpt",
                 next_item.estimator = "BM",
                 next_item.prior_dist = "norm",
@@ -74,6 +77,7 @@ emt <- function(num_items = 20L,
     c(
       if (take_training) instructions(),
       main_test(label = label, media_dir = media_dir, num_items = num_items,
+                min_response_time = min_response_time,
                 next_item.criterion = next_item.criterion,
                 next_item.estimator = next_item.estimator,
                 next_item.prior_dist = next_item.prior_dist,

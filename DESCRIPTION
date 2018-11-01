@@ -9,9 +9,13 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    checkmate (>= 1.8.5)
+    checkmate (>= 1.8.5),
+    psychTestR (>= 2.2.0),
+    psychTestRCAT (>= 1.3.0),
+    shiny (>= 1.1.0)
 Suggests:
     tidyverse (>= 1.2.1),
     purrrlyr (>= 0.0.3),
-    gtools (>= 3.8.1)
+    gtools (>= 3.8.1),
+    devtools (>= 1.13.6)
 RoxygenNote: 6.1.0

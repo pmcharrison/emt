@@ -75,9 +75,8 @@ for (i in seq_len(nrow(items))) {
 item_bank <-
   left_join(x = items,
             y = rename(params,
-                       target_category_id = statement_category,
-                       target_clip_id = clip_id),
-            by = c("target_clip_id", "target_category_id", "statement_id")) %>%
+                       target_category_id = statement_category),
+            by = c("target_category_id", "statement_id")) %>%
   na.omit() %>%
   add_column(., item_id = seq_len(nrow(.)), .before = 1) %>%
   mutate(answer = sprintf("clip_%i", target_position)) %>%
